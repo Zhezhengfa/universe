@@ -21,3 +21,26 @@ function animate() {
     renderer.render(scene, camera);
 }
 animate();
+scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+const sunLight = new THREE.PointLight(0xffdd44, 2.5, 100);
+sunLight.position.set(0, 0, 0);
+scene.add(sunLight);
+const sun = new THREE.Mesh(
+    new THREE.SphereGeometry(1.2, 32, 32),
+    new THREE.MeshBasicMaterial({ color: 0xffdd22 })
+);
+scene.add(sun);
+const earthMoonGroup = new THREE.Group();
+scene.add(earthMoonGroup);
+const earth = new THREE.Mesh(
+    new THREE.SphereGeometry(0.7, 32, 32),
+    new THREE.MeshStandardMaterial({ color: 0x4488dd })
+);
+earth.position.x = 6;
+earthMoonGroup.add(earth);
+const moon = new THREE.Mesh(
+    new THREE.SphereGeometry(0.3, 24, 24),
+    new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
+);
+moon.position.x = 1.8;
+earth.add(moon);
