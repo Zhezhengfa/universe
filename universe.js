@@ -15,12 +15,6 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
-function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-}
-animate();
 scene.add(new THREE.AmbientLight(0xffffff, 0.5));
 const sunLight = new THREE.PointLight(0xffdd44, 2.5, 100);
 sunLight.position.set(0, 0, 0);
@@ -44,3 +38,11 @@ const moon = new THREE.Mesh(
 );
 moon.position.x = 1.8;
 earth.add(moon);
+function animate ( ) { requestAnimationFrame (animate);
+    controls.update ();
+    sun.rotation.y += 0.003;
+    earthMoonGroup.rotation.y+=0.008;
+    earth.rotation.y+=0.02;
+    moon.rotation.y+=0.04;
+    renderer. render (scene, camera);
+} animate ();
